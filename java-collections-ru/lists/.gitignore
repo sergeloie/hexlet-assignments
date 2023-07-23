@@ -4,3 +4,5 @@ caches/
 .idea/
 .DS_Store
 out/
+config/
+Main.java

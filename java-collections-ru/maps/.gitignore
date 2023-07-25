@@ -1,0 +1,8 @@
+.gradle/
+build/
+caches/
+.idea/
+.DS_Store
+out/
+Main.java
+/config

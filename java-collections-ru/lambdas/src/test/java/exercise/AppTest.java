@@ -1,9 +1,8 @@
 package exercise;
 
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
-
-import java.util.List;
+//import java.util.Arrays;
+//import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,8 +24,7 @@ class AppTest {
         };
 
         String[][] actual = App.enlargeArrayImage(test);
-        String[][] expected = image;
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(image);
     }
 
 
@@ -42,8 +40,7 @@ class AppTest {
         };
 
         String[][] actual = App.enlargeArrayImage(test);
-        String[][] expected = image;
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(image);
 
     }
 
@@ -54,8 +51,7 @@ class AppTest {
         String[][] image = {};
 
         String[][] actual = App.enlargeArrayImage(test);
-        String[][] expected = image;
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(image);
     }
 }
 // END

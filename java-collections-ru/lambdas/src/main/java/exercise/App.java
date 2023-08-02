@@ -1,11 +1,11 @@
 package exercise;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-
-import static exercise.Sorter.takeOldestMans;
+//import java.util.Arrays;
+//import java.util.List;
+//import java.util.Map;
+//import java.util.stream.Stream;
+//
+//import static exercise.Sorter.takeOldestMans;
 
 // BEGIN
 public class App {

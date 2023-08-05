@@ -8,7 +8,7 @@ import java.util.Set;
 // BEGIN
 public class App {
 
-    public static LinkedHashMap<String, String> genDiff(Map map1, Map map2) {
+    public static LinkedHashMap<String, String> genDiff(Map<String, ? extends Object> map1, Map<String, ? extends Object> map2) {
         LinkedHashMap<String, String> result = new LinkedHashMap<>();
         Set<String> setOfKeys = new HashSet<>(map1.size() + map2.size(), 1.0f);
         setOfKeys.addAll(map1.keySet());

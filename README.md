@@ -1,3 +1,5 @@
+[![hexlet-check](https://github.com/sergeloie/hexlet-assignments/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sergeloie/hexlet-assignments/actions/workflows/hexlet-check.yml)
+
 # Домашние задания
 
 Работа над домашними заданиями происходит на компьютере студента. 

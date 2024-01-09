@@ -16,10 +16,10 @@ public class Generator {
         Faker faker = new Faker(new Locale("en"), RANDOM);
 
         for (int i = 0; i < ITEMS_COUNT; i++) {
-            var name = faker.book().title();
-            var body = faker.lorem().sentence();
-            var id = faker.number().randomNumber();
-            var post = new Post(id, name, body);
+            String name = faker.book().title();
+            String body = faker.lorem().sentence();
+            long id = faker.number().randomNumber();
+            Post post = new Post(id, name, body);
             posts.add(post);
         }
 

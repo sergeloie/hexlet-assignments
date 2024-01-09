@@ -14,7 +14,7 @@ public class PostRepository {
     }
 
     public static List<Post> search(String term) {
-        var posts = entities.stream()
+        List<Post> posts = entities.stream()
                 .filter(entity -> entity.getName().startsWith(term))
                 .toList();
         return posts;

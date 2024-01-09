@@ -9,14 +9,15 @@ public final class App {
 
     public static Javalin getApp() {
 
-        var app = Javalin.create(config -> {
+        Javalin app = Javalin.create(config -> {
             config.plugins.enableDevLogging();
         });
 
         app.get(NamedRoutes.rootPath(), RootController::index);
 
         // BEGIN
-        
+        app.get(NamedRoutes.postsPath(), PostsController::index);
+        app.get(NamedRoutes.postPath("{id}"), PostsController::show);
         // END
 
         return app;

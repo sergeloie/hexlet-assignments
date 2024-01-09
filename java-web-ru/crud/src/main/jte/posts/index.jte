@@ -2,7 +2,7 @@
 @import exercise.repository.PostRepository
 @import exercise.util.NamedRoutes
 @param PostsPage page
-@param Long pageNumber
+@param int pageNumber
 
 
 @template.layout.page(content = @`
@@ -14,7 +14,7 @@
     <nav aria-label="Page navigation">
         <ul class="pagination">
             @if(pageNumber == 1)
-                <li class="page-item disabled"><a class="page-link" href="${NamedRoutes.postsPath(0L)}">Previous</a></li>
+                <li class="page-item disabled"><a class="page-link" href="${NamedRoutes.postsPath(0)}">Previous</a></li>
             @else
                 <li class="page-item"><a class="page-link" href="${NamedRoutes.postsPath(pageNumber - 1)}">Previous</a></li>
             @endif

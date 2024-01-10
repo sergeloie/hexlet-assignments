@@ -8,7 +8,7 @@ public class NamedRoutes {
 
     // BEGIN
     public static String postsPath() {
-        return "/posts?page=1";
+        return "/posts";
     }
 
     public static String postsPath(String pageNumber) {

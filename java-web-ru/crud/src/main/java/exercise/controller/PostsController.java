@@ -25,13 +25,20 @@ public class PostsController {
     }
 
     public static void index(Context context) {
-        Integer pageNumber = context.queryParamAsClass("page", Integer.class).get();
+        Integer pageNumber = context.queryParamAsClass("page", Integer.class).getOrDefault(1);
         List<Post> posts = PostRepository.getEntities();
-        int start = 5 * (pageNumber - 1) + 1;
-        int end = Math.min(5 * (pageNumber - 1) + 5, posts.size());
+        int start = 5 * (pageNumber - 1);
+        int end = Math.min(5 * pageNumber - 1, posts.size() - 1);
         List<Post> pagedPosts = posts.subList(start, end + 1);
         PostsPage page = new PostsPage(pagedPosts);
         context.render("posts/index.jte", Map.of("page", page, "pageNumber", pageNumber));
+    }
+
+    public static void indexall(Context context) {
+        List<Post> posts = PostRepository.getEntities();
+        PostsPage page = new PostsPage(posts);
+        context.render("posts/indexall.jte", Collections.singletonMap("page", page));
+
     }
     // END
 }

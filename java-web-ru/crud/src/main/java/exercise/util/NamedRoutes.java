@@ -26,5 +26,9 @@ public class NamedRoutes {
     public static String postPath(Long id) {
         return postPath(String.valueOf(id));
     }
+
+    public static String indexAllPath() {
+        return "/indexall";
+    }
     // END
 }

@@ -87,12 +87,13 @@ public class PostsController {
     }
 
     public static void edit(Context context) {
-        EditPostPage page = new EditPostPage(
-                Long.valueOf(Objects.requireNonNull(context.formParam("id"))),
-                context.formParam("name"),
-                context.formParam("body"),
-                null
-        );
+        Long id = context.pathParamAsClass("id", Long.class).get();
+        Post post = PostRepository.find(id)
+                .orElseThrow(() -> new NotFoundResponse("Post not found"));
+        String name = post.getName();
+        String body = post.getBody();
+        EditPostPage page = new EditPostPage(id, name, body, null);
+        context.render("posts/edit.jte", Collections.singletonMap("page", page));
     }
 
     // END

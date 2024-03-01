@@ -18,7 +18,7 @@ javacrumbs-version = "3.2.2"
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson-version" }
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson-version" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-version" }
-jackson-databind-nullable = { module = "org.openapitools:jackson-databind-nullable", version.ref = "openapitools-version" }
+jackson-databind-nullable = { module = "rg.openapitools:jackson-databind-nullable", version.ref = "openapitools-version" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-plarform-version" }
 junitBom = { module = "org.junit:junit-bom", version.ref = "junit-version" }
 jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-version" }
@@ -58,6 +58,17 @@ springBundle = [
     "spring-boot-starter-security",
     "spring-boot-starter-validation",
     "spring-boot-starter-web",
+    "spring-boot-starter-test"
+]
+springStudy = [
+    "spring-boot-devtools",
+    "spring-boot-starter",
+    "spring-boot-starter-web",
+    "spring-boot-starter-test"
+]
+junitBundle = [
+    "junit-platform-launcher",
+    "jupiter"
 ]
 
 [plugins]

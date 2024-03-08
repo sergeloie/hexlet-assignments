@@ -1,6 +1,8 @@
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,8 +37,9 @@ public class ProductsController {
     @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
-        boolean productExists = productRepository.findAll().stream()
-                .anyMatch(item -> item.equals(product));
+//        boolean productExists = productRepository.findAll().stream()
+//                .anyMatch(item -> item.equals(product));
+        boolean productExists = productRepository.exists(Example.of(product));
         if (productExists) {
             throw new ResourceAlreadyExistsException(
                     String.format("Product with specified title = %s and price = %d already exists"
@@ -47,6 +50,8 @@ public class ProductsController {
         }
         return product;
     }
+
+
     // END
 
     @GetMapping(path = "/{id}")

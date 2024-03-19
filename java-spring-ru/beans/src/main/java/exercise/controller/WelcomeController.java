@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class WelcomeController {
 
-    @Qualifier("getDayTime")
     @Autowired
     private Daytime daytime;
 

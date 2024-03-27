@@ -33,7 +33,7 @@ public class TasksController {
     @GetMapping(path = "/{id}")
     public Task show(@PathVariable long id) {
 
-        var task =  taskRepository.findById(id)
+        Task task =  taskRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found"));
 
         return task;
@@ -48,7 +48,7 @@ public class TasksController {
     @PutMapping(path = "/{id}")
     public Task update(@PathVariable long id, @RequestBody Task taskData) {
 
-        var task =  taskRepository.findById(id)
+        Task task =  taskRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found"));
 
         task.setTitle(taskData.getTitle());

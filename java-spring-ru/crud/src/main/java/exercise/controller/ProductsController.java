@@ -41,7 +41,7 @@ public class ProductsController {
     // BEGIN
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> show() {
+    public List<ProductDTO> index() {
         return productRepository.findAll()
                 .stream()
                 .map(productMapper::map)
@@ -59,12 +59,12 @@ public class ProductsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDTO create(@Valid @RequestBody ProductCreateDTO productCreateDTO) {
-        long categoryId = productCreateDTO.getCategoryId();
-        Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST
-                        , "Category with id: " + categoryId + " not found"));
+//        long categoryId = productCreateDTO.getCategoryId();
+//        Category category = categoryRepository.findById(categoryId)
+//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST
+//                        , "Category with id: " + categoryId + " not found"));
         Product product = productMapper.map(productCreateDTO);
-        product.setCategory(category);
+//        product.setCategory(category);
         productRepository.save(product);
         return productMapper.map(product);
     }
@@ -74,12 +74,7 @@ public class ProductsController {
     public ProductDTO update(@Valid @RequestBody ProductUpdateDTO productUpdateDTO, @PathVariable long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id: " + id + " not found"));
-        long categoryId = productUpdateDTO.getCategoryId().get();
-        Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST
-                        , "Category with id: " + categoryId + " not found"));
         productMapper.update(productUpdateDTO, product);
-        product.setCategory(category);
         productRepository.save(product);
         return productMapper.map(product);
     }

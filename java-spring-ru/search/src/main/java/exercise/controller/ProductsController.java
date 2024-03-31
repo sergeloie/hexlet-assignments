@@ -44,11 +44,10 @@ public class ProductsController {
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
-    Page<ProductDTO> index(ProductParamsDTO productParamsDTO, @RequestParam(defaultValue = "1") int page) {
+    List<ProductDTO> index(ProductParamsDTO productParamsDTO, @RequestParam(defaultValue = "1") int page) {
         Specification<Product> specs = productSpecification.build(productParamsDTO);
         Page<Product> posts = productRepository.findAll(specs, PageRequest.of(page - 1, 10));
-        Page<ProductDTO> result = posts.map(productMapper::map);
-        return result;
+        return posts.map(productMapper::map).toList();
     }
     // END
 
@@ -57,8 +56,7 @@ public class ProductsController {
     ProductDTO create(@Valid @RequestBody ProductCreateDTO productData) {
         Product product = productMapper.map(productData);
         productRepository.save(product);
-        ProductDTO productDto = productMapper.map(product);
-        return productDto;
+        return productMapper.map(product);
     }
 
     @GetMapping("/{id}")
@@ -66,8 +64,7 @@ public class ProductsController {
     ProductDTO show(@PathVariable Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not Found: " + id));
-        ProductDTO productDto = productMapper.map(product);
-        return productDto;
+        return productMapper.map(product);
     }
 
     @PutMapping("/{id}")
@@ -78,8 +75,7 @@ public class ProductsController {
 
         productMapper.update(productData, product);
         productRepository.save(product);
-        ProductDTO productDto = productMapper.map(product);
-        return productDto;
+        return productMapper.map(product);
     }
 
     @DeleteMapping("/{id}")

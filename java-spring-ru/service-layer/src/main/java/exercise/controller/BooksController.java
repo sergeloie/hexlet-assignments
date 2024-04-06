@@ -31,6 +31,25 @@ public class BooksController {
         return bookService.getAll();
     }
 
-    
+    @GetMapping(path = "/{id}")
+    public BookDTO show(@PathVariable long id) {
+        return bookService.findById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookDTO create(@RequestBody BookCreateDTO bookCreateDTO) {
+        return bookService.create(bookCreateDTO);
+    }
+
+    @PutMapping(path = "/{id}")
+    public BookDTO update(@PathVariable long id, @RequestBody BookUpdateDTO bookUpdateDTO) {
+        return bookService.update(bookUpdateDTO, id);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable long id) {
+        bookService.delete(id);
+    }
     // END
 }

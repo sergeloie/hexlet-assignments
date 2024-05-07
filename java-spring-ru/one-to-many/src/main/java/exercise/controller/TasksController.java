@@ -7,10 +7,8 @@ import exercise.dto.TaskDTO;
 import exercise.dto.TaskUpdateDTO;
 import exercise.mapper.TaskMapper;
 import exercise.model.Task;
-import exercise.model.User;
-import exercise.repository.UserRepository;
 import lombok.AllArgsConstructor;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +31,6 @@ public class TasksController {
     // BEGIN
     private TaskRepository taskRepository;
     private TaskMapper taskMapper;
-    private UserRepository userRepository;
 
     @GetMapping
     public List<TaskDTO> index() {
@@ -61,10 +58,7 @@ public class TasksController {
     public TaskDTO update(@RequestBody @Valid TaskUpdateDTO taskUpdateDTO, @PathVariable long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + "not found"));
-        User user = userRepository.findById(taskUpdateDTO.getAssigneeId())
-                .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + "not found"));
         taskMapper.update(taskUpdateDTO, task);
-        task.setAssignee(user);
         taskRepository.save(task);
         return taskMapper.map(task);
     }

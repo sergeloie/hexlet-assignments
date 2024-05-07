@@ -23,5 +23,3 @@
 ### Подсказки
 
 * Если при решении возникнут сложности, заглядывайте в наш [эталонный репозиторий](https://github.com/hexlet-components/java-spring-blog/tree/main)
-
-
